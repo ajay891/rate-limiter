@@ -26,7 +26,7 @@ public class RateLimitTest {
 	@DisplayName("Test to confirm user exceeds rate-limit when traffic (500) is higher than limit (100) per sec")
 	public void testUserExceededRateLimit() throws InterruptedException {
 
-		long iterations = 500; // Number of requests in test
+		long iterations = 1000; // Send 1000 requests without any sleep. Default rate-limit is 100 hence this should fail
 		long sleepTime = 0; // Give a sleep time of 0 ms for example to pump traffic without any delay
 
 		List<RateLimitException> rateLimitExceptions = new ArrayList<RateLimitException>();
