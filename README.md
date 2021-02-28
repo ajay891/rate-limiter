@@ -45,14 +45,19 @@ Below aspects have been taken in consideration in order to make project Producti
 ## How to Plug-it ?
 Below code sample & comments provide idea about how *rate-limit-1.0.jar* can be used in other projects
 ```sh
+
 // Register rate-limit for an APIid
 RateLimitRegistry._instance.registerRateLimitForAPI(apiID, new RateLimitImpl(apiID)); 
+
 // Get handle of rateLimit onject from registery
 IRateLimit rateLimit = RateLimitRegistry._instance.getRateLimit(apiID);
+
 // Default rate-limit for API is 100. Override default-max-rate-limit for API (if required)
 rateLimit.setDefaultLimit(200);
+
 // Call checkIfUserExceededRateLimit method for every request
 // RateLimitException will be thrown in case user exceeds max-rate-limit for API
 rateLimit.checkIfUserExceededRateLimit(userID);
+
 ```
 
