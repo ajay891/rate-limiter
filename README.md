@@ -13,6 +13,12 @@
 
 ## Design
 
+### High Level Design
+![Screenshot](high-level-design.png) <!-- .element height="100%" width="100%" -->
+
+### Project & Package Structure
+![Screenshot](package-structure.png) <!-- .element height="100%" width="100%" -->
+
 ## How to Build & Test ?
 
 - Project uses maven for packaging and it can be built by running below command in project root area on windows command prompt or from Eclipse run configuration
