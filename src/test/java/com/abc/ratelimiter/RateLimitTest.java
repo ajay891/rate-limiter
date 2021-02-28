@@ -27,7 +27,7 @@ public class RateLimitTest {
 	public void testUserExceededRateLimit() throws InterruptedException {
 
 		long iterations = 500; // Number of requests in test
-		long sleepTime = 1; // Give a sleep time of 1 ms for example to pump traffic every 1milliseconds
+		long sleepTime = 0; // Give a sleep time of 0 ms for example to pump traffic without any delay
 
 		List<RateLimitException> rateLimitExceptions = new ArrayList<RateLimitException>();
 
