@@ -24,7 +24,7 @@ mvn clean install
 
 ![Screenshot](mvn-build.png) <!-- .element height="100%" width="100%" -->
 
-- By running above build command tests will be executed. Same JUnit tests can be also ran from Eclipse 
+- By running above maven build command, JUnit tests will be executed. Same JUnit tests can also be executed from Eclipse. 
 
 ![Screenshot](junit-test-automation.png) <!-- .element height="100%" width="100%" -->
 
