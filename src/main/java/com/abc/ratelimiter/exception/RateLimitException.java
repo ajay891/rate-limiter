@@ -13,21 +13,21 @@ public class RateLimitException extends Exception {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String appID;
+	private String apiID;
 	
 	private long rateLimit;
 	
 	private String userID;
 
-	public RateLimitException(String errorMessage, String appID, Long rateLimit, String userID) {
+	public RateLimitException(String errorMessage, String apiID, Long rateLimit, String userID) {
 		super(errorMessage);
-		this.appID = appID;
+		this.apiID = apiID;
 		this.rateLimit = rateLimit;
 		this.userID = userID;
 	}
 
-	public String getAppID() {
-		return appID;
+	public String getAPIid() {
+		return apiID;
 	}
 
 	public Long getRateLimit() {

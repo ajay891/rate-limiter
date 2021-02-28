@@ -23,11 +23,10 @@ public class RateLimitTest {
 	private static Logger logger = Logger.getLogger(RateLimitTest.class.getName());
 
 	@Test
-	@DisplayName("User exceeds rate-limit when traffic (500) is higher than limit (100) per sec")
+	@DisplayName("User exceeds rate-limit when traffic (1000) is higher than limit (100) per sec")
 	public void testUserExceededRateLimit() throws InterruptedException {
 
 		long iterations = 1000; // Send 1000 requests without any sleep. Default rate-limit is 100 hence this should fail
-		long sleepTime = 0; // Give a sleep time of 0 ms for example to pump traffic without any delay
 
 		List<RateLimitException> rateLimitExceptions = new ArrayList<RateLimitException>();
 
@@ -40,22 +39,21 @@ public class RateLimitTest {
 				rateLimit.checkIfUserExceededRateLimit(userID);
 			} catch (RateLimitException rateLimitException) {
 				logger.warning("Rate Limit exceeed for user '" + rateLimitException.getUserID() + "' for API '"
-						+ rateLimitException.getAppID() + "'. Rate limit for API '" + rateLimitException.getRateLimit()
+						+ rateLimitException.getAPIid() + "'. Rate limit for API '" + rateLimitException.getRateLimit()
 						+ "'");
 				rateLimitExceptions.add(rateLimitException);
 			}
-			Thread.sleep(sleepTime);
 		}
 		assertNotEquals(rateLimitExceptions.size(), 0);
 
 	}
 
 	@Test
-	@DisplayName("User does not exceed rate-limit when traffic (1) is less than limit (100) per sec")
+	@DisplayName("User does not exceed rate-limit when traffic (10) is less than limit (100) per sec")
 	public void testUserDoesNotExceededRateLimit() throws InterruptedException {
 
-		long iterations = 1; // Number of requests in test
-		long sleepTime = 1; // Give a sleep time of 1 ms for example to pump traffic every 1milliseconds
+		long iterations = 10; // Send 10 requests 
+		long sleepTime = 100; // Give a sleep time of 100ms to achieve tps of 10  
 
 		List<RateLimitException> rateLimitExceptions = new ArrayList<RateLimitException>();
 
@@ -68,7 +66,7 @@ public class RateLimitTest {
 				rateLimit.checkIfUserExceededRateLimit(userID);
 			} catch (RateLimitException rateLimitException) {
 				logger.warning("Rate Limit exceeed for user '" + rateLimitException.getUserID() + "' for API '"
-						+ rateLimitException.getAppID() + "'. Rate limit for API '" + rateLimitException.getRateLimit()
+						+ rateLimitException.getAPIid() + "'. Rate limit for API '" + rateLimitException.getRateLimit()
 						+ "'");
 				rateLimitExceptions.add(rateLimitException);
 			}
