@@ -34,7 +34,7 @@ Below aspects have been taken in consideration in order to make project PROD rea
 - **Maven Build** - As shared above, *Rate Limiter* project uses maven for packaging
 - **JUnit Test** - Poject has automatedt JUunit tests
 - **Logging** - For better understanding of what system is doing, code also has logging in place (no system.out.println)
-- **Custom Exception Handling** - In case user exceeds rate-limit, library throws custom RateLimitException which provides details like UserID, APIid & default-max-limit for APPId
+- **Custom Exception Handling** - In case user exceeds rate-limit, library will throw custom RateLimitException which provides details like UserID, APIid & default-max-limit
 - **Usage Example** - Below code sample & comments provide idea about how *rate-limit-1.0.jar* can be used in other projects
 ```sh
 // Register rate-limit for an APIid
