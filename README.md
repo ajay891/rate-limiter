@@ -33,18 +33,18 @@ Below aspects have been taken in consideration in order to make project PROD rea
 
 - **Build** - As shared above, *Rate Limiter* project uses maven for packaging
 - **Test** - Poject has automatedt JUunit tests
-- **Logging** - For better understanding what system is doing, code also has logging in place (no system.out.println)
+- **Logging** - For better understanding of what system is doing, code also has logging in place (no system.out.println)
 - **Exception Handling** - In case user exceeds rate-limit, library throws custom RateLimitException which provides details like UserID, APIid & default-max-limit for APPId
-- **Usage Example** - Below code sample & comments provide idea aboutt how *rate-limit-1.0.jar* can be used in other projects
+- **Usage Example** - Below code sample & comments provide idea about how *rate-limit-1.0.jar* can be used in other projects
 ```sh
-// Register rate-limit for an API
+// Register rate-limit for an APIid
 RateLimitRegistry._instance.registerRateLimitForAPI(apiID, new RateLimitImpl(apiID)); 
-// Get handle of rateLimit onject from register
+// Get handle of rateLimit onject from registery
 IRateLimit rateLimit = RateLimitRegistry._instance.getRateLimit(apiID);
-// Default rate-limit for API is 100. Override default max rate-liit for API if required
+// Default rate-limit for API is 100. Override default-max-rate-limit for API (if required)
 rateLimit.setDefaultLimit(200);
 // Call checkIfUserExceededRateLimit method for every request
-// RateLimitException will be thrown in case user exceeds max rate-limit for API
+// RateLimitException will be thrown in case user exceeds max-rate-limit for API
 rateLimit.checkIfUserExceededRateLimit(userID);
 ```
 
