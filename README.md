@@ -32,8 +32,12 @@ mvn clean install
 
 ```sh
 // Register rate-limit for an API
-// Default rate-limit for API is 100. Override default max rate-liit for API if required
+RateLimitRegistry._instance.registerRateLimitForAPI(apiID, new RateLimitImpl(apiID)); 
 // Get handle of rateLimit onject from register
-// Call checkIfUserExceededRateLimit method for every request for user. RateLimitException will be thrown in case user exceeds max rate-limit for API
+IRateLimit rateLimit = RateLimitRegistry._instance.getRateLimit(apiID);
+// Default rate-limit for API is 100. Override default max rate-liit for API if required
+rateLimit.setDefaultLimit(200);
+// Call checkIfUserExceededRateLimit method for every request, RateLimitException will be thrown in case user exceeds max rate-limit for API
+rateLimit.checkIfUserExceededRateLimit(userID);
 ```
 
