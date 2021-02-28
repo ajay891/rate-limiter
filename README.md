@@ -27,9 +27,9 @@ mvn clean install
 
 ![Screenshot](junit-test-automation.png) <!-- .element height="100%" width="100%" -->
 
-## How to plug it ?
+## How to Plug-it ?
 
-Below aspects have been taken in consideration in order to make PROD ready 
+Below aspects have been taken in consideration in order to make project PROD ready & pluggable
 
 - **Build** - As shared above, *Rate Limiter* project uses maven for packaging
 - **Test** - Poject has automatedt JUunit tests
