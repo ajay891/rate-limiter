@@ -14,7 +14,7 @@
 ## Design
 
 ### High Level Design
-![Screenshot](design.png) <!-- .element height="100%" width="100%" -->
+![Screenshot](high-level-design.png) <!-- .element height="100%" width="100%" -->
 
 ### Project & Package Structure
 ![Screenshot](package-structure.png) <!-- .element height="100%" width="100%" -->
