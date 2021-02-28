@@ -1,14 +1,14 @@
 # Rate Limiter
 
 ## Introduction 
-*Rate Limiter* is a tool that monitors the number of requests agreed per seconds . If the request count exceeds the number agreed by the service owner and the user (in a decided window time), the rate limiter blocks all the excess calls (say by throwing exceptions). The user can be a human or any other service (ex: in a micro service-based architecture)
+*Rate Limiter* is a tool that monitors the number of requests agreed per seconds . If the request count exceeds the number agreed by the service owner and the user (in a decided window time), the rate limiter blocks all the excess calls by throwing custom exception. The user can be a human or any other service (ex: in a micro service-based architecture)
 
 ## Objectives
 
-- Different APIs would have different rate limits (if limit is not provided, system takes default as 100 requests per sec)
-- Should be possible to set default limits. This will be applied when an API specific limit has not been configured.
-- The solution should consider rate limiting based on User+API combination
-- The solution should be plug and play (easily configurable)
+- Different APIs can have different rate limits (if limit is not provided, system takes default as 100 requests per sec)
+- Possible to set default limits. This will be applied when an API specific limit has not been configured.
+- Solution consider rate limiting based on User+API combination
+- Plug and play solution (easily configurable)
 - Production ready code (Automated tests are mandatory)
 
 ## Design
