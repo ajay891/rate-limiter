@@ -80,9 +80,9 @@ public class RateLimitTest {
 	@Test
 	@DisplayName("Default limit (200) can be configured for an API")
 	public void testSetDefaultLimit() throws InterruptedException {
-		RateLimitImpl rateLimiter = new RateLimitImpl("getOrder");
-		rateLimiter.setDefaultLimit(200);
-		assertEquals(rateLimiter.getDefaultLimit(), 200);
+		IRateLimit rateLimit = new RateLimitImpl("getOrder");
+		rateLimit.setDefaultLimit(200);
+		assertEquals(rateLimit.getDefaultLimit(), 200);
 
 	}
 
