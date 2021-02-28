@@ -19,7 +19,7 @@ public class RateLimitImpl implements IRateLimit {
 	 */
 	private static Logger logger = Logger.getLogger(RateLimitImpl.class.getName());
 	
-	private String appID; // Hold appID, will be used to make custom exception aware of appID
+	private String apiID; // Hold apiID, will be used to make custom exception aware of apiID
 	private long maxLimit = 100; // Default Limit
 	private long tps;
 	private long timeStamp;
@@ -31,8 +31,8 @@ public class RateLimitImpl implements IRateLimit {
 	 * 
 	 * @param apiId
 	 */
-	public RateLimitImpl(String appID) {
-		this.appID = appID;
+	public RateLimitImpl(String apiID) {
+		this.apiID = apiID;
 		this.timeStamp = System.currentTimeMillis();
 	}
 	
@@ -42,8 +42,8 @@ public class RateLimitImpl implements IRateLimit {
 	 * @param apiId
 	 * @param limit
 	 */
-	public RateLimitImpl(String appID, long limit) {
-		this.appID = appID;
+	public RateLimitImpl(String apiID, long limit) {
+		this.apiID = apiID;
 		this.maxLimit = limit;
 		this.timeStamp = System.currentTimeMillis();
 	}
@@ -71,7 +71,7 @@ public class RateLimitImpl implements IRateLimit {
 		// Calculate transactionCount per second
 		tps = (long) (transactionCount / deltaTime * 1000L);
 		if (tps >= maxLimit && transactionCount != 1) {
-			throw new RateLimitException("Rate limit has been exceeded", appID, maxLimit, userID);
+			throw new RateLimitException("Rate limit has been exceeded", apiID, maxLimit, userID);
 		} else {
 			logger.info("Request rate within default-max-limit '" + maxLimit + "', tps for user is '" + tps + "'");
 		}
