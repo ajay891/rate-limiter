@@ -20,10 +20,14 @@ service owner and the user (in a decided window time), the rate limiter blocks a
 ```sh
 mvn clean install
 ```
-- Output jar will 'rate-limit-1.0.jar' will be available in target folder. This jar can be plugged in to any services.
+- After above build, output jar will **rate-limit-1.0.jar** will be available in target folder. This jar can be plugged in to any services.
+
 ![Screenshot](mvn-build.png) <!-- .element height="100%" width="100%" -->
+
 - By running above build command tests will be executed. Same JUnit tests can be also ran from Eclipse 
+
 ![Screenshot](junit-test-automation.png) <!-- .element height="100%" width="100%" -->
+
 ## How to plug it ?
 
 ```sh
