@@ -14,16 +14,16 @@ service owner and the user (in a decided window time), the rate limiter blocks a
 
 ## Design
 
-## How to build ?
+## How to Build & Test ?
 
 - Project uses maven for packaging and it can be built by doing cd to project root aread and running below command windows command prompt or from Eclipse run configuration
 ```sh
 mvn clean install
 ```
-## Test Results 
-- By running above build command tests will be executed and output will look like below 
-- Same JUnit tests can be also ran from Eclipse 
-
+- Output jar will 'rate-limit-1.0.jar' will be available in target folder. This jar can be plugged in to any services.
+![Screenshot](mvn-build.png) <!-- .element height="100%" width="100%" -->
+- By running above build command tests will be executed. Same JUnit tests can be also ran from Eclipse 
+![Screenshot](junit-test-automation.png) <!-- .element height="100%" width="100%" -->
 ## How to plug it ?
 
 ```sh
