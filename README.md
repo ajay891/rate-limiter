@@ -34,7 +34,7 @@ mvn clean install
 ![Screenshot](junit-test-automation.png) <!-- .element height="100%" width="100%" -->
 
 ## How to Plug-it ?
-Below code sample & comments provide idea about how *rate-limit-1.0.jar* can be used in other projects
+Below code comments & sample code explains how to integrate *rate-limit-1.0.jar* with other projects
 ```sh
 
 // Register rate-limit for an APIid
