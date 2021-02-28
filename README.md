@@ -52,7 +52,7 @@ rateLimit.checkIfUserExceededRateLimit(userID);
 
 ```
 
-## Additional Ino Regarding Production Readiness / Completeness
+## Additional Info Regarding Production Readiness / Completeness
 
 Below aspects have been taken in consideration in order to make project Production ready 
 
