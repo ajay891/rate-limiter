@@ -38,8 +38,8 @@ public class RateLimitTest {
 			try {
 				rateLimit.checkIfUserExceededRateLimit(userID);
 			} catch (RateLimitException rateLimitException) {
-				logger.warning("Rate Limit exceeed for user '" + rateLimitException.getUserID() + "' for API '"
-						+ rateLimitException.getAPIid() + "'. Rate limit for API '" + rateLimitException.getRateLimit()
+				logger.warning("Rate Limit exceeeded for user '" + rateLimitException.getUserID() + "' for API '"
+						+ rateLimitException.getAPIid() + "', default-max-limit is '" + rateLimitException.getRateLimit()
 						+ "'");
 				rateLimitExceptions.add(rateLimitException);
 			}
@@ -65,7 +65,7 @@ public class RateLimitTest {
 			try {
 				rateLimit.checkIfUserExceededRateLimit(userID);
 			} catch (RateLimitException rateLimitException) {
-				logger.warning("Rate Limit exceeed for user '" + rateLimitException.getUserID() + "' for API '"
+				logger.warning("Rate Limit exceeeded for user '" + rateLimitException.getUserID() + "' for API '"
 						+ rateLimitException.getAPIid() + "'. Rate limit for API '" + rateLimitException.getRateLimit()
 						+ "'");
 				rateLimitExceptions.add(rateLimitException);

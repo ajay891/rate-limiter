@@ -70,10 +70,10 @@ public class RateLimitImpl implements IRateLimit {
 		double deltaTime = (currentTime - timeStamp);
 		// Calculate transactionCount per second
 		tps = (long) (transactionCount / deltaTime * 1000L);
-		if (transactionCount != 1)
-			logger.info("Request within max rate-limit '" + maxLimit + "', tps for user is '" + tps + "'");
 		if (tps >= maxLimit && transactionCount != 1) {
 			throw new RateLimitException("Rate limit has been exceeded", appID, maxLimit, userID);
+		} else {
+			logger.info("Request rate within default-max-limit '" + maxLimit + "', tps for user is '" + tps + "'");
 		}
 		wLock.unlock();
 		userTransactionMap.put(userID, transactionCount);
