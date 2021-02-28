@@ -30,6 +30,12 @@ mvn clean install
 
 ## How to plug it ?
 
+Below aspects have been taken in consideration in order to make PROD ready for 
+
+- **Build & Test** - As shared above, *Rate Limiter* project has automatedt JUunit tests. Also, project uses maven for packaging
+- **Logging** - Code also has logging in place (no system.out.println) for better understanding
+- **Exception Handling** - Application throws custom RateLimitException which provides information about user is excedding rate-limit for which API and what is the default-max-limit for same API
+- **Usage Example** - Below code sample & comments provide idea how **rate-limit-1.0.jar** can be used in other projects
 ```sh
 // Register rate-limit for an API
 RateLimitRegistry._instance.registerRateLimitForAPI(apiID, new RateLimitImpl(apiID)); 
@@ -37,7 +43,8 @@ RateLimitRegistry._instance.registerRateLimitForAPI(apiID, new RateLimitImpl(api
 IRateLimit rateLimit = RateLimitRegistry._instance.getRateLimit(apiID);
 // Default rate-limit for API is 100. Override default max rate-liit for API if required
 rateLimit.setDefaultLimit(200);
-// Call checkIfUserExceededRateLimit method for every request, RateLimitException will be thrown in case user exceeds max rate-limit for API
+// Call checkIfUserExceededRateLimit method for every request
+// RateLimitException will be thrown in case user exceeds max rate-limit for API
 rateLimit.checkIfUserExceededRateLimit(userID);
 ```
 
