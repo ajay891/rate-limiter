@@ -7,9 +7,9 @@
 
 - Different APIs can have different rate limits (if limit is not provided, system takes default as 100 requests per sec)
 - Possible to set default limits. This will be applied when an API specific limit has not been configured.
-- Solution consider rate limiting based on User+API combination
+- Solution considers rate limiting based on User+API combination
 - Plug and play solution (easily configurable)
-- Production ready code (Automated tests are mandatory)
+- Production ready code (Automated tests are available)
 
 ## Design
 
