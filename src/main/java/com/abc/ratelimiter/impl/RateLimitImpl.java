@@ -21,7 +21,6 @@ public class RateLimitImpl implements IRateLimit {
 	
 	private String apiID; // Hold apiID, will be used to make custom exception aware of apiID
 	private long maxLimit = 100; // Default Limit
-	private long tps;
 	private long timeStamp;
 	private Map<String, Long> userTransactionMap = new HashMap<String, Long>();
 	private WriteLock wLock = new ReentrantReadWriteLock().writeLock();
@@ -55,6 +54,7 @@ public class RateLimitImpl implements IRateLimit {
 	 * @throws RateLimitException
 	 */
 	public void checkIfUserExceededRateLimit(String userID) throws RateLimitException {
+		wLock.lock();
 		Object transactionCountCached = this.userTransactionMap.get(userID);
 		long transactionCount;
 		if (null == transactionCountCached) {
@@ -63,20 +63,19 @@ public class RateLimitImpl implements IRateLimit {
 			transactionCount = (Long)transactionCountCached;
 		}
 		++transactionCount;
-		wLock.lock();
 		// Take the current timestamp
 		long currentTime = System.currentTimeMillis();
 		// Get the delta time elapsed
 		double deltaTime = (currentTime - timeStamp);
 		// Calculate transactionCount per second
-		tps = (long) (transactionCount / deltaTime * 1000L);
+		long tps = (long) (transactionCount / deltaTime * 1000L);
 		if (tps >= maxLimit && transactionCount != 1) {
 			throw new RateLimitException("Rate limit has been exceeded", apiID, maxLimit, userID);
 		} else {
 			logger.info("Request rate within default-max-limit '" + maxLimit + "', tps for user is '" + tps + "'");
 		}
-		wLock.unlock();
 		userTransactionMap.put(userID, transactionCount);
+		wLock.unlock();
 	}
 	
 	
